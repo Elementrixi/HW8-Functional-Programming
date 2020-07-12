@@ -24,14 +24,14 @@ public class UsersOperations {
     }
 
     private static void printUsersOlderThan(List<Users> users, int age) {
-        System.out.println("\nUsers older than " + age + "");
+        System.out.println("\nПользователи старше " + age + "");
         users.stream()
                 .filter(user -> user.getAge() > age)
                 .forEach(System.out::println);
     }
 
     private static void printUsersYoungerThanAndForm(List<Users> users, int age, String city) {
-        System.out.println("\nUsers younger than " + age + " and from Днепр");
+        System.out.println("\nПользователи младше " + age + " и с Днепра");
         users.stream()
                 .filter(user -> user.getAge() < age && user.getCity().equals(city))
                 .forEach(System.out::println);
@@ -45,7 +45,7 @@ public class UsersOperations {
                 .average()
                 .ifPresent(avgAge::set);
 
-        System.out.println("\nAverage age of users from " + city + " is " + avgAge);
+        System.out.println("\nСредний возраст пользователей с " + city + "  " + avgAge);
 
     }
 
@@ -53,11 +53,11 @@ public class UsersOperations {
         int notFromKiev = (int) users.stream()
                 .filter(user -> !user.getCity().equals(city))
                 .count();
-        System.out.println("\nAmount of users who don't live in Kiev " + notFromKiev);
+        System.out.println("\nКоличество пользователей который не живут в Киеве " + notFromKiev);
     }
 
     private static void printUsersSortedWithAge(List<Users> users, int value) {
-        System.out.println("\nFirst three users in sorted list " + value);
+        System.out.println("\nПервые  3 пользователя в отсортированом листе " + value);
         users.stream()
                 .sorted(Comparator.comparingInt(Users::getAge))
                 .limit(value)

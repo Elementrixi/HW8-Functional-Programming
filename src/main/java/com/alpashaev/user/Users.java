@@ -22,9 +22,9 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", city='" + city + '\'' +
+                " имя='" + name + '\'' +
+                ", возраст=" + age +
+                ", город='" + city + '\'' +
                 '}';
     }
 }
