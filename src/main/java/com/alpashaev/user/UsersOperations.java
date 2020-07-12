@@ -46,7 +46,6 @@ public class UsersOperations {
                 .ifPresent(avgAge::set);
 
         System.out.println("\nСредний возраст пользователей с " + city + "  " + avgAge);
-
     }
 
     private static void printCountUsersFromCity(List<Users> users, String city) {
