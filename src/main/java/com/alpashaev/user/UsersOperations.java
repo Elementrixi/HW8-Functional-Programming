@@ -6,32 +6,38 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class UsersOperations {
-    public static void usersListOperations() {
+
+    public static List<Users> implementationOfUsers() {
         List<Users> users = Arrays.asList(
-                new Users("Вася", 16, "Днепр"),
-                new Users("Петя", 23, "Днепр"),
-                new Users("Елена", 42, "Луцк"),
-                new Users("Елена", 92, "Чернигов"),
-                new Users("Сергей", 5, "Киев"),
-                new Users("Маринв", 32, "Киев"),
-                new Users("Иван Иванович", 69, "Львов")
+                new Users("Vasya", 16, "Dnipro"),
+                new Users("Petya", 23, "Dnipro"),
+                new Users("Elena", 42, "Lutsk"),
+                new Users("Elena", 92, "Chernigov"),
+                new Users("Sergey", 5, "Kyiv"),
+                new Users("Marina", 32, "Kyiv"),
+                new Users("Ivan Ivanovich", 69, "Lviv")
         );
-        printUsersOlderThan(users, 40);
-        printUsersYoungerThanAndForm(users, 50, "Днепр");
-        printAverageFromCity(users, "Львов");
-        printCountUsersFromCity(users, "Киев");
-        printUsersSortedWithAge(users, 3);
+        return users;
+    }
+
+    public static void operationsOnUsers(){
+        List<Users> user = implementationOfUsers();
+        printUsersOlderThan(user, 40);
+        printUsersYoungerThanAndForm(user, 50, "Dnipro");
+        printAverageFromCity(user, "Lviv");
+        printCountUsersFromCity(user, "Kyiv");
+        printUsersSortedWithAge(user, 3);
     }
 
     private static void printUsersOlderThan(List<Users> users, int age) {
-        System.out.println("\nПользователи старше " + age + "");
+        System.out.println("\nUsers older than " + age + "");
         users.stream()
                 .filter(user -> user.getAge() > age)
                 .forEach(System.out::println);
     }
 
     private static void printUsersYoungerThanAndForm(List<Users> users, int age, String city) {
-        System.out.println("\nПользователи младше " + age + " и с Днепра");
+        System.out.println("\nUsers younger than " + age + " and from Dnipro");
         users.stream()
                 .filter(user -> user.getAge() < age && user.getCity().equals(city))
                 .forEach(System.out::println);
@@ -45,18 +51,19 @@ public class UsersOperations {
                 .average()
                 .ifPresent(avgAge::set);
 
-        System.out.println("\nСредний возраст пользователей с " + city + "  " + avgAge);
+        System.out.println("\nAverage age of users from " + city + "  " + avgAge);
+
     }
 
     private static void printCountUsersFromCity(List<Users> users, String city) {
         int notFromKiev = (int) users.stream()
                 .filter(user -> !user.getCity().equals(city))
                 .count();
-        System.out.println("\nКоличество пользователей который не живут в Киеве " + notFromKiev);
+        System.out.println("Number of users who do not live in Kiev " + notFromKiev);
     }
 
     private static void printUsersSortedWithAge(List<Users> users, int value) {
-        System.out.println("\nПервые  3 пользователя в отсортированом листе " + value);
+        System.out.println("\nThe first 3 users in the sorted list " + value);
         users.stream()
                 .sorted(Comparator.comparingInt(Users::getAge))
                 .limit(value)
