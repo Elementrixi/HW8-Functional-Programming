@@ -39,9 +39,9 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                " имя='" + name + '\'' +
-                ", возраст=" + age +
-                ", город='" + city + '\'' +
+                " name : '" + name + '\'' +
+                ", age = " + age +
+                ", city : '" + city + '\'' +
                 '}';
     }
 }
